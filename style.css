@@ -214,7 +214,7 @@ main .header .header_content .cart p {
     margin: 0 0;
     padding: 0.1rem 0.2rem;
     font-size: 0.75rem;
-    background-color: #E34448;
+    background-color: #ff5b5b;
     color: #FBFAFB;
     border-radius: 15px;
     font-weight: 700;
@@ -269,6 +269,7 @@ main .sticky_top_navbar {
     top: 0;
     background-color: white;
     transition: transform 0.3s ease-out;
+    z-index: 100; /* Un grand z-index pour passer devant les images */
 }
 
 
@@ -365,11 +366,53 @@ main .main_content{
 
 
 
+/* 
+main .container_img_main{
+    width: 100%;
+} */
 
 
 
+/* UTILISATION DE COPILOT POUR ALTERNER LES IMAGES */
+/* ********************************************************************************************************************************************* */
+.container_img_main {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+/* Superposition des images */
+.img_banniere {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    animation: fadeAnimation 25s infinite; /* Ajusté pour 5 images */
+}
 
+/* On définit une image visible en permanence pour la hauteur */
+.img_banniere:first-child {
+    position: relative; /* Elle détermine la hauteur du parent */
+}
+
+/* Définition des délais pour l'alternance */
+.img_banniere:nth-child(1) { animation-delay: 0s; }
+.img_banniere:nth-child(2) { animation-delay: 5s; }
+.img_banniere:nth-child(3) { animation-delay: 10s; }
+.img_banniere:nth-child(4) { animation-delay: 15s; }
+.img_banniere:nth-child(5) { animation-delay: 20s; }
+
+@keyframes fadeAnimation {
+    0% { opacity: 0; }
+    4% { opacity: 1; }
+    20% { opacity: 1; }
+    24% { opacity: 0; }
+    100% { opacity: 0; }
+}
+/* ********************************************************************************************************************************************* */
 
 
 
